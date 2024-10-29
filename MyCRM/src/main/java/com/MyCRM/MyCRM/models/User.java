@@ -1,5 +1,7 @@
 package com.MyCRM.MyCRM.models;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,22 +15,29 @@ public class User {
     private Integer Id;
 
     @Column
-    private String name;
+    private String username;
 
     @Column
     private String email;
+
+    @Column 
+    String password;
 
     @Column
     private String role;
 
     public void setName(String name){
-        this.name = name;
+        this.username = name;
     }
 
     public void setEmail(String email){
         this.email = email;
     }
     
+    public void setPassword(String password){
+        this.password = password;
+    }
+
     public void setRole(String role){
         this.role = role;
     }
@@ -37,15 +46,55 @@ public class User {
         return this.Id;
     }
 
-    public String getName(){
-        return this.name;
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+       return username;
     }
 
     public String getEmail(){
-        return this.email;
+       return this.email;
     }
 
-    public String getRole(){
-        return this.role;
-    }
+    // @Override
+    // public Collection<? extends GrantedAuthority> getAuthorities() {
+    //     return List.of(new SimpleGrantedAuthority(role));
+    // }
+
+    // @Override
+    // public String getPassword() {
+    //     return password;
+    // }
+
+    // @Override
+    // public String getUsername() {
+    //     return username;
+    // }
+
+    // public String getEmail(){
+    //     return this.email;
+    // }
+
+    // @Override
+    // public boolean isAccountNonExpired() {
+    //     return true;
+    // }
+
+    // @Override
+    // public boolean isAccountNonLocked() {
+    //     return true;
+    // }
+
+    // @Override
+    // public boolean isCredentialsNonExpired() {
+    //     return true;
+    // }
+
+    // @Override
+    // public boolean isEnabled() {
+    //     return true;
+    // }
 }
+

@@ -7,7 +7,4 @@ C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\models\User
 C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\MyCrmApplication.java
 C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\repositories\IClientRepository.java
 C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\repositories\IUserRepository.java
-C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\services\IClientService.java
-C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\services\Implements\ClientServiceImpl.java
-C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\services\Implements\UserServiceImpl.java
-C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\services\IUserService.java
+C:\Users\LENOVO\OneDrive\Desktop\MyCRM\src\main\java\com\MyCRM\MyCRM\SecurityConfig.java

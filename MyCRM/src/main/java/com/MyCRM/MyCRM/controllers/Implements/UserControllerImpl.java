@@ -1,64 +1,42 @@
 package com.MyCRM.MyCRM.controllers.Implements;
 
 
-import java.util.List;
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import com.MyCRM.MyCRM.controllers.IUserController;
 import com.MyCRM.MyCRM.models.User;
-import com.MyCRM.MyCRM.services.Implements.UserServiceImpl;
+import com.MyCRM.MyCRM.repositories.IUserRepository;
 
 @RestController
-@RequestMapping(path = "/user")
-public class UserControllerImpl implements IUserController {
+@RequestMapping("/api/users")
+public class UserControllerImpl {
+
     @Autowired
-    private UserServiceImpl userService;
+    private IUserRepository userRepository;
 
-    @GetMapping(path = "/all")
-    @Override
-    public ResponseEntity<List<User>> getAllUsers(){
-        return ResponseEntity.ok(userService.findAllUsers());
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    // Qeydiyyat Metodu
+    @PostMapping("/register")
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Şifrəni şifrələyin
+        User savedUser = userRepository.save(user);
+        return ResponseEntity.ok(savedUser);
     }
 
-    @PostMapping(path = "/add")
-    @Override
-    public ResponseEntity<User> addUser(@RequestBody User user){
-        if(userService.existsUser(user)){
-           return ResponseEntity.status(HttpStatus.CONFLICT).body(user);
+    // Giriş Metodu 
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User user) throws RuntimeException {
+        User existingUser = userRepository.findByEmail(user.getEmail())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+            return ResponseEntity.ok("Giriş uğurlu");
+        } else {
+            return ResponseEntity.status(401).body("Yanlış şifrə");
         }
-        else{
-            return ResponseEntity.ok(userService.saveUser(user));
-        }
     }
-
-    @DeleteMapping(path = "/delete")
-    @Override
-    public ResponseEntity<Boolean> deleteUser(@RequestBody User user){
-        if(!userService.existsUser(user)){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-         }
-         else{
-             return ResponseEntity.ok(userService.deleteUser(user));
-         }
-    }
-
-
-
-    
-    
-
-
-
 }

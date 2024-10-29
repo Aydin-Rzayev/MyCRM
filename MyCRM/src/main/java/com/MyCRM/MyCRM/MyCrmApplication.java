@@ -3,8 +3,10 @@ package com.MyCRM.MyCRM;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 
-@EntityScan(basePackages = "com.MyCRM")
+
+@ComponentScan
 @SpringBootApplication
 public class MyCrmApplication {
 

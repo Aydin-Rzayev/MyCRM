@@ -1,13 +1,4 @@
-com\MyCRM\MyCRM\services\Implements\UserServiceImpl.class
 com\MyCRM\MyCRM\repositories\IClientRepository.class
-com\MyCRM\MyCRM\repositories\IUserRepository.class
-com\MyCRM\MyCRM\models\User.class
 com\MyCRM\MyCRM\models\Client.class
-com\MyCRM\MyCRM\MyCrmApplication.class
-com\MyCRM\MyCRM\services\IClientService.class
-com\MyCRM\MyCRM\services\IUserService.class
-com\MyCRM\MyCRM\controllers\Implements\ClientControllerImpl.class
-com\MyCRM\MyCRM\controllers\IUserController.class
-com\MyCRM\MyCRM\controllers\Implements\UserControllerImpl.class
 com\MyCRM\MyCRM\controllers\IClientController.class
-com\MyCRM\MyCRM\services\Implements\ClientServiceImpl.class
+com\MyCRM\MyCRM\MyCrmApplication.class
