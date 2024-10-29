@@ -17,10 +17,10 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                .requestMatchers("/api/users/register").permitAll() // Qeydiyyat marşrutu icazə verilsin
-                .requestMatchers("/api/users/login").permitAll() // Giriş marşrutu icazə verilsin
-                .requestMatchers("/api/customers").authenticated() // Müştəri marşrutu yalnız daxil olan istifadəçilərə
-                .anyRequest().denyAll() // Başqa bütün marşrutlara giriş qadağandır
+                .requestMatchers("/api/users/register").permitAll() // Qeydiyyat 
+                .requestMatchers("/api/users/login").permitAll() // Giriş
+                .requestMatchers("/api/customers").authenticated() // daxil olan istifadəçilərə müştərilərlə bağlı məlumat əldə etmək imkanı verir 
+                .anyRequest().denyAll() 
             )
             .oauth2Login(Customizer.withDefaults());  // OAuth2 ilə giriş
 
